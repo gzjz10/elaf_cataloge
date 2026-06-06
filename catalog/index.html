@@ -13,7 +13,6 @@
 :root{
   --brand:#14605f;--brand2:#1d8480;--dark:#0c3e3d;--soft:#e9f2f1;
   --ink:#23262b;--muted:#6b7280;--muted2:#9aa1a8;--bg:#f5f6f5;--card:#fff;--line:#e6e9e8;
-  --queen:#7a3e8f;--queen2:#9d5cb0;--queen-dark:#4d245c;
   --shadow:0 1px 2px rgba(16,40,39,.04),0 8px 24px -12px rgba(16,40,39,.18);
   --shadow-lg:0 14px 44px -18px rgba(12,62,61,.4);--radius:18px;--maxw:1340px;
 }
@@ -66,22 +65,6 @@ img{display:block;max-width:100%}
 .count{font-size:14px;color:var(--muted);white-space:nowrap}
 .count b{color:var(--brand);font-family:'Cairo';font-weight:800}
 
-/* company filter */
-.cofilter{max-width:var(--maxw);margin:0 auto;padding:12px 24px 0;display:flex;gap:9px;flex-wrap:wrap}
-.cochip{font-family:'Cairo';font-weight:700;font-size:14px;padding:9px 18px;border-radius:12px;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;transition:all .16s;display:inline-flex;align-items:center;gap:8px}
-.cochip .c{font-family:'Tajawal';font-weight:600;font-size:11.5px;color:var(--muted2)}
-.cochip:hover{border-color:var(--brand)}
-.cochip.active{background:var(--brand);border-color:var(--brand);color:#fff}.cochip.active .c{color:#cdeae7}
-.cochip.queen.active{background:var(--queen);border-color:var(--queen)}.cochip.queen:hover{border-color:var(--queen)}
-/* company header */
-.co-head{display:flex;align-items:center;gap:14px;margin:38px 0 4px;padding:16px 22px;border-radius:14px;color:#fff;background:linear-gradient(120deg,var(--dark),var(--brand));box-shadow:var(--shadow)}
-.co-head.queen{background:linear-gradient(120deg,var(--queen-dark),var(--queen))}
-.co-head .co-ar{font-family:'Cairo';font-weight:900;font-size:22px}
-.co-head .co-en{font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.8}
-.co-head .co-n{margin-inline-start:auto;font-family:'Cairo';font-weight:700;font-size:14px;background:rgba(255,255,255,.15);padding:5px 14px;border-radius:999px}
-.cobadge{position:absolute;top:12px;inset-inline-end:12px;font-family:'Cairo';font-weight:700;font-size:10px;padding:3px 8px;border-radius:7px;color:#fff;background:var(--brand)}
-.cobadge.queen{background:var(--queen)}
-.sec-head.queen{background:linear-gradient(120deg,var(--queen),var(--queen2))}
 /* section nav chips (replaces alphabet bar) */
 .secnav{max-width:var(--maxw);margin:0 auto;padding:12px 24px 2px;display:flex;gap:8px;flex-wrap:wrap}
 .snav{font-family:'Tajawal';font-weight:700;font-size:13.5px;padding:7px 15px;border-radius:11px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;transition:all .16s;display:inline-flex;align-items:center;gap:7px}
@@ -158,7 +141,7 @@ main{max-width:var(--maxw);margin:0 auto;padding:18px 24px 80px}
 
 <header class="header"><div class="wrap">
   <a class="brand" href="#top"><img src="assets/brand/logo-trans.png" alt="شعار ايلاف الشرقية"/>
-    <div><div class="ar">ايلاف الشرقية &amp; قوين</div><div class="en">Elaf Al Sharqiah &amp; Queen</div></div></a>
+    <div><div class="ar">شركة ايلاف الشرقية التجارية</div><div class="en">Elaf Al Sharqiah Trading</div></div></a>
   <div class="header-actions"><button class="btn btn-primary" onclick="window.print()">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>طباعة</button></div>
 </div></header>
@@ -166,10 +149,10 @@ main{max-width:var(--maxw);margin:0 auto;padding:18px 24px 80px}
 <section class="hero" id="top"><div class="wm"></div><div class="wrap">
   <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9M14 17H5M17 4l3 3-3 3M7 14l-3 3 3 3"/></svg>دليل المنتجات الرسمي</span>
   <h1>كتالوج <span class="accent">المنتجات</span></h1>
-  <p class="sub">تشكيلة منتجات شركتي ايلاف الشرقية التجارية وقوين لموسم ٢٠٢٦ / ٢٠٢٧ — أدوات منزلية ومستلزمات متنوعة بجودة عالية.</p>
+  <p class="sub">تشكيلة منتجات شركة ايلاف الشرقية التجارية لموسم ٢٠٢٦ / ٢٠٢٧ — أدوات منزلية ومستلزمات متنوعة بجودة عالية.</p>
   <div class="hero-stats">
-    <div class="stat"><div class="num" id="sCount">٩٦١</div><div class="lbl">صنف متوفر</div></div>
-    <div class="stat"><div class="num">٢</div><div class="lbl">شركتان</div></div>
+    <div class="stat"><div class="num" id="sCount">٢٥٠</div><div class="lbl">صنف متوفر</div></div>
+    <div class="stat"><div class="num" id="sSecs">١٢</div><div class="lbl">أقسام منتجات</div></div>
     <div class="stat"><div class="num"><svg class="sar"><use href="#sar"/></svg></div><div class="lbl">التسعير بالريال السعودي</div></div>
   </div>
 </div></section>
@@ -177,8 +160,8 @@ main{max-width:var(--maxw);margin:0 auto;padding:18px 24px 80px}
 <div class="toolbar"><div class="wrap">
   <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
     <input id="search" type="search" placeholder="ابحث باسم الصنف أو رقم الصنف…" aria-label="بحث"/></div>
-  <span class="count"><b id="resCount">٩٦١</b> صنف</span>
-</div><div class="cofilter" id="cofilter"></div><div class="secnav" id="secnav"></div></div>
+  <span class="count"><b id="resCount">٢٥٠</b> صنف</span>
+</div><div class="secnav" id="secnav"></div></div>
 
 <main id="main"></main>
 <div class="empty" id="empty" style="display:none">
@@ -196,65 +179,45 @@ main{max-width:var(--maxw);margin:0 auto;padding:18px 24px 80px}
 <script src="data/products.js"></script>
 <script>
 const AR=['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];const toAr=n=>String(n).replace(/[0-9]/g,d=>AR[+d]);
-const C=window.CATALOG||{products:[],categories:[],companies:[],counts:{}};
-const COMPS=C.companies||[], CATS=C.categories||[], PRODS=C.products||[], COUNTS=C.counts||{};
-const catmeta={};CATS.forEach(c=>catmeta[c.key]=c);
-const conames={};COMPS.forEach(c=>conames[c.key]=c);
+const C=window.CATALOG||{products:[],categories:[]};
+const CATS=C.categories, PRODS=C.products;
 const PRICES=JSON.parse(localStorage.getItem('elaf_prices')||'{}');
 const norm=s=>(s||'').replace(/[ً-ْٰ]/g,'').replace(/[إأآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').trim();
 const esc=s=>(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const main=document.getElementById('main'),empty=document.getElementById('empty'),searchEl=document.getElementById('search'),resCount=document.getElementById('resCount'),secnav=document.getElementById('secnav'),cofilter=document.getElementById('cofilter');
-const G={};COMPS.forEach(co=>{G[co.key]={};CATS.forEach(c=>G[co.key][c.key]=[]);});
-PRODS.forEach(p=>{if(G[p.company]){(G[p.company][p.cat]||(G[p.company][p.cat]=[])).push(p);}});
+const main=document.getElementById('main'),empty=document.getElementById('empty'),searchEl=document.getElementById('search'),resCount=document.getElementById('resCount'),secnav=document.getElementById('secnav');
+const byCat={};CATS.forEach(c=>byCat[c.key]=[]);PRODS.forEach(p=>(byCat[p.cat]||(byCat[p.cat]=[])).push(p));
 const noImg='<div class="noimg">بدون صورة</div>';
-let activeCo='';
 
 function card(p){
   const media=p.img?`<img src="${p.img}" alt="${esc(p.name)}" loading="lazy"/>`:noImg;
   const price=PRICES[p.sku]!=null?PRICES[p.sku]:(p.price||'');
   const qty=p.qty?`<span class="qty">الكرتون: ${toAr(p.qty)}</span>`:'';
-  const badge=activeCo?'':`<span class="cobadge ${p.company}">${p.company==='queen'?'قوين':'ايلاف'}</span>`;
-  return `<article class="card"><div class="media"><span class="idx">${toAr(p.idx)}</span>${badge}${media}</div>
+  return `<article class="card"><div class="media"><span class="idx">${toAr(p.idx)}</span>${media}</div>
   <div class="body"><h3 class="name">${esc(p.name)}</h3>
   <div class="meta">${p.sku?`<span class="sku"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>${esc(p.sku)}</span>`:'<span></span>'}${qty}</div>
   <div class="foot"><label class="price" title="السعر بالريال — قابل للتعديل"><svg class="sar"><use href="#sar"/></svg>
   <input type="text" inputmode="decimal" placeholder="السعر" value="${esc(String(price))}" data-sku="${esc(p.sku)}" aria-label="السعر"/></label></div></div></article>`;
 }
 
-function buildFilter(){
-  const chips=[{k:'',ar:'الكل',n:PRODS.length}].concat(COMPS.map(c=>({k:c.key,ar:c.ar,n:COUNTS[c.key]||0})));
-  cofilter.innerHTML=chips.map(c=>`<button class="cochip ${c.k} ${activeCo===c.k?'active':''}" data-k="${c.k}">${esc(c.ar)} <span class="c">${toAr(c.n)}</span></button>`).join('');
-  cofilter.querySelectorAll('.cochip').forEach(b=>b.onclick=()=>{activeCo=b.dataset.k;render();window.scrollTo({top:document.querySelector('.toolbar').offsetTop-80,behavior:'smooth'});});
-}
 function buildNav(){
-  const cos=activeCo?[activeCo]:COMPS.map(c=>c.key);
-  let html='';
-  CATS.forEach(c=>{const n=cos.reduce((s,co)=>s+(G[co][c.key]?G[co][c.key].length:0),0);if(n)html+=`<button class="snav" data-k="${c.key}">${esc(c.ar)}<span class="c">${toAr(n)}</span></button>`;});
-  secnav.innerHTML=html;
-  secnav.querySelectorAll('.snav').forEach(b=>b.onclick=()=>{const el=document.querySelector('[id^="sec-"][id$="-'+b.dataset.k+'"]');if(el)el.scrollIntoView({behavior:'smooth'});});
+  secnav.innerHTML=CATS.map(c=>`<button class="snav" data-k="${c.key}">${esc(c.ar)}<span class="c">${toAr(c.count)}</span></button>`).join('');
+  secnav.querySelectorAll('.snav').forEach(b=>b.onclick=()=>{const el=document.getElementById('sec-'+b.dataset.k);if(el)el.scrollIntoView({behavior:'smooth'});});
 }
 
 function render(){
   const q=norm(searchEl.value),qr=searchEl.value.toLowerCase().trim();
-  const cos=activeCo?[activeCo]:COMPS.map(c=>c.key);
   let total=0,htmlOut='';
-  cos.forEach(co=>{
-    let coHtml='',coTotal=0;
-    CATS.forEach(c=>{
-      let items=G[co][c.key]||[];
-      if(q)items=items.filter(p=>norm(p.name).includes(q)||(p.sku||'').toLowerCase().includes(qr));
-      if(!items.length)return;
-      coTotal+=items.length;
-      coHtml+=`<section class="section" id="sec-${co}-${c.key}">
-        <div class="sec-head ${co}"><div><div class="ar">${esc(c.ar)}</div><div class="en">${esc(c.en)}</div></div>
-        <div class="cnt">${toAr(items.length)}<span>صنف</span></div></div>
-        <div class="grid">${items.map(card).join('')}</div></section>`;
-    });
-    if(coTotal){total+=coTotal;
-      htmlOut+=`<div class="co-head ${co}"><span class="co-ar">${esc(conames[co].ar)}</span><span class="co-en">${esc(conames[co].en)}</span><span class="co-n">${toAr(coTotal)} صنف</span></div>`+coHtml;}
+  CATS.forEach(c=>{
+    let items=byCat[c.key]||[];
+    if(q)items=items.filter(p=>norm(p.name).includes(q)||(p.sku||'').toLowerCase().includes(qr));
+    if(!items.length)return;
+    total+=items.length;
+    htmlOut+=`<section class="section" id="sec-${c.key}">
+      <div class="sec-head"><div><div class="ar">${esc(c.ar)}</div><div class="en">${esc(c.en)}</div></div>
+      <div class="cnt">${toAr(items.length)}<span>صنف</span></div></div>
+      <div class="grid">${items.map(card).join('')}</div></section>`;
   });
   resCount.textContent=toAr(total);
-  buildNav();
   if(!total){main.innerHTML='';empty.style.display='block';return;}
   empty.style.display='none';main.innerHTML=htmlOut;
   main.querySelectorAll('.price input').forEach(inp=>inp.addEventListener('input',e=>{
@@ -263,8 +226,9 @@ function render(){
 }
 let t;searchEl.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(render,140)});
 document.getElementById('sCount').textContent=toAr(PRODS.length);
+document.getElementById('sSecs').textContent=toAr(CATS.length);
 const totop=document.getElementById('totop');addEventListener('scroll',()=>totop.classList.toggle('show',scrollY>600));totop.onclick=()=>scrollTo({top:0,behavior:'smooth'});
-buildFilter();render();
+buildNav();render();
 </script>
 </body>
 </html>
