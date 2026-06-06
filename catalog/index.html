@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>كتالوج المنتجات | شركة ايلاف الشرقية التجارية</title>
+<meta name="description" content="كتالوج منتجات شركة ايلاف الشرقية التجارية — موسم 2026/2027"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet"/>
+<link rel="icon" href="assets/brand/logo-full.png"/>
+<style>
+:root{
+  --brand:#14605f;--brand2:#1d8480;--dark:#0c3e3d;--soft:#e9f2f1;
+  --ink:#23262b;--muted:#6b7280;--muted2:#9aa1a8;--bg:#f5f6f5;--card:#fff;--line:#e6e9e8;
+  --shadow:0 1px 2px rgba(16,40,39,.04),0 8px 24px -12px rgba(16,40,39,.18);
+  --shadow-lg:0 14px 44px -18px rgba(12,62,61,.4);--radius:18px;--maxw:1340px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Tajawal',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Cairo','Tajawal',sans-serif;margin:0;line-height:1.2;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:var(--brand);color:#fff}
+.sar{width:.84em;height:.84em;display:inline-block;vertical-align:-.06em;fill:currentColor}
+
+/* top bar */
+.topbar{background:var(--dark);color:#cfe6e4;font-size:13px}
+.topbar .wrap{max-width:var(--maxw);margin:0 auto;padding:8px 24px;display:flex;justify-content:space-between;gap:16px}
+
+/* header */
+.header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.88);backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line)}
+.header .wrap{max-width:var(--maxw);margin:0 auto;padding:13px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:13px}
+.brand img{height:48px}
+.brand .ar{font-family:'Cairo';font-weight:800;font-size:16.5px}
+.brand .en{font-size:10px;letter-spacing:.18em;color:var(--brand);font-weight:600;text-transform:uppercase}
+.btn{font-family:'Tajawal';font-weight:700;font-size:14px;border:none;cursor:pointer;border-radius:999px;padding:11px 20px;display:inline-flex;align-items:center;gap:8px;transition:all .18s}
+.btn-primary{background:var(--brand);color:#fff;box-shadow:var(--shadow)}
+.btn-primary:hover{background:var(--dark)}
+.btn svg{width:17px;height:17px}
+
+/* hero */
+.hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(900px 480px at 82% -10%,rgba(29,132,128,.55),transparent 60%),linear-gradient(140deg,var(--dark),var(--brand) 58%,#0f514f)}
+.hero .wrap{max-width:var(--maxw);margin:0 auto;padding:60px 24px 64px;position:relative;z-index:2}
+.hero .wm{position:absolute;inset:0;z-index:1;opacity:.07;background:url('assets/brand/logo-white.png') no-repeat left -40px center;background-size:auto 140%}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:13px;color:#bfe7e3;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);padding:7px 16px;border-radius:999px;margin-bottom:20px}
+.eyebrow svg{width:15px;height:15px}
+.hero h1{font-size:clamp(34px,5.4vw,58px);font-weight:900;margin-bottom:14px}
+.hero h1 .accent{color:#9fe0db}
+.hero .sub{font-size:clamp(15px,1.6vw,18px);color:#d6ece9;max-width:560px;font-weight:300}
+.hero-stats{display:flex;gap:36px;margin-top:34px;flex-wrap:wrap}
+.stat .num{font-family:'Cairo';font-weight:800;font-size:32px;line-height:1}
+.stat .lbl{font-size:13px;color:#bfe7e3;margin-top:6px}
+.stat .num .sar{width:.72em;height:.72em}
+
+/* toolbar */
+.toolbar{position:sticky;top:75px;z-index:40;background:rgba(245,246,245,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.toolbar .wrap{max-width:var(--maxw);margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.search{position:relative;flex:1;min-width:240px}
+.search svg{position:absolute;inset-inline-start:16px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--muted2)}
+.search input{width:100%;font-family:'Tajawal';font-size:15px;padding:13px 48px 13px 18px;border:1px solid var(--line);border-radius:13px;background:#fff;transition:all .18s}
+.search input:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px var(--soft)}
+.count{font-size:14px;color:var(--muted);white-space:nowrap}
+.count b{color:var(--brand);font-family:'Cairo';font-weight:800}
+
+/* section nav chips (replaces alphabet bar) */
+.secnav{max-width:var(--maxw);margin:0 auto;padding:12px 24px 2px;display:flex;gap:8px;flex-wrap:wrap}
+.snav{font-family:'Tajawal';font-weight:700;font-size:13.5px;padding:7px 15px;border-radius:11px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;transition:all .16s;display:inline-flex;align-items:center;gap:7px}
+.snav:hover{border-color:var(--brand);color:var(--brand)}
+.snav .c{font-size:11px;color:var(--muted2);font-family:'Cairo';font-weight:700}
+.snav:hover .c{color:var(--brand2)}
+
+/* sections */
+main{max-width:var(--maxw);margin:0 auto;padding:18px 24px 80px}
+.section{margin-top:30px;scroll-margin-top:150px}
+.sec-head{display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(120deg,var(--brand),var(--brand2));color:#fff;border-radius:14px;padding:18px 24px;margin-bottom:20px;box-shadow:var(--shadow)}
+.sec-head .ar{font-size:22px;font-weight:800}
+.sec-head .en{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#cdeae7;margin-top:3px}
+.sec-head .cnt{font-family:'Cairo';font-weight:900;font-size:26px;line-height:1;text-align:center}
+.sec-head .cnt span{display:block;font-family:'Tajawal';font-weight:400;font-size:9px;letter-spacing:.1em;color:#cdeae7}
+
+/* grid + cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(216px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .22s,box-shadow .22s,border-color .22s;box-shadow:var(--shadow)}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:#d6dedc}
+.media{position:relative;aspect-ratio:1/1;background:#fff;display:flex;align-items:center;justify-content:center;padding:14px;border-bottom:1px solid #eef1f0}
+.media img{width:100%;height:100%;object-fit:contain;transition:transform .3s}
+.card:hover .media img{transform:scale(1.04)}
+.idx{position:absolute;top:12px;inset-inline-start:12px;background:rgba(20,96,95,.92);color:#fff;font-family:'Cairo';font-weight:700;font-size:11px;padding:4px 9px;border-radius:8px}
+.noimg{color:var(--muted2);font-size:12px}
+.body{padding:15px 15px 17px;display:flex;flex-direction:column;gap:11px;flex:1}
+.name{font-family:'Tajawal';font-weight:700;font-size:15px;line-height:1.5;min-height:2.9em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.meta{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.sku{display:inline-flex;align-items:center;gap:6px;font-family:'Tajawal';font-weight:600;font-size:12px;color:var(--brand);background:var(--soft);padding:5px 11px;border-radius:8px;direction:ltr}
+.sku svg{width:13px;height:13px}
+.qty{font-family:'Tajawal';font-weight:500;font-size:11.5px;color:var(--muted2);white-space:nowrap}
+.foot{margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);display:flex;align-items:center;gap:10px}
+.price{display:flex;align-items:center;gap:6px;background:#fafbfb;border:1px solid var(--line);border-radius:11px;padding:8px 12px;flex:1;transition:all .16s}
+.price:focus-within{border-color:var(--brand);box-shadow:0 0 0 3px var(--soft);background:#fff}
+.price .sar{color:var(--brand);width:1em;height:1em}
+.price input{border:none;background:transparent;width:100%;font-family:'Cairo';font-weight:700;font-size:16px;color:var(--ink);min-width:0}
+.price input:focus{outline:none}
+.price input::placeholder{color:var(--muted2);font-weight:600}
+
+.empty{text-align:center;padding:80px 20px;color:var(--muted)}
+.empty svg{width:60px;height:60px;color:var(--muted2);margin-bottom:14px}
+.empty h3{font-size:20px;color:var(--ink);margin-bottom:6px}
+
+/* footer */
+.footer{background:var(--dark);color:#bcd6d4}
+.footer .wrap{max-width:var(--maxw);margin:0 auto;padding:46px 24px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.footer img{height:52px}
+.footer .ar{font-family:'Cairo';font-weight:800;font-size:16px;color:#fff}
+.footer .en{font-size:11px;letter-spacing:.16em;color:#9fe0db;margin-top:4px}
+.footer .meta{font-size:13px}
+
+.totop{position:fixed;inset-inline-end:24px;bottom:24px;z-index:60;width:48px;height:48px;border-radius:50%;background:var(--brand);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);opacity:0;visibility:hidden;transform:translateY(10px);transition:all .25s}
+.totop.show{opacity:1;visibility:visible;transform:none}
+.totop svg{width:22px;height:22px}
+
+@media (max-width:640px){
+  .header .wrap{padding:11px 16px}.brand img{height:38px}.brand .ar{font-size:14px}
+  .hero .wrap{padding:42px 16px 50px}.toolbar{top:62px}
+  .toolbar .wrap,.secnav,main{padding-left:16px;padding-right:16px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:13px}
+  .name{font-size:13.5px}.sec-head .ar{font-size:18px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+@media print{.topbar,.toolbar,.secnav,.totop,.header-actions,.hero .eyebrow,.hero-stats{display:none!important}
+  body{background:#fff}.header{position:static}.card{break-inside:avoid;box-shadow:none}.grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="sar" viewBox="0 0 1124.14 1256.39">
+<path d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"/>
+<path d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"/></symbol></svg>
+
+<div class="topbar"><div class="wrap"><span>كتالوج المنتجات — موسم ٢٠٢٦ / ٢٠٢٧</span><span>ELAF AL SHARQIAH TRADING CO.</span></div></div>
+
+<header class="header"><div class="wrap">
+  <a class="brand" href="#top"><img src="assets/brand/logo-trans.png" alt="شعار ايلاف الشرقية"/>
+    <div><div class="ar">شركة ايلاف الشرقية التجارية</div><div class="en">Elaf Al Sharqiah Trading</div></div></a>
+  <div class="header-actions"><button class="btn btn-primary" onclick="window.print()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>طباعة</button></div>
+</div></header>
+
+<section class="hero" id="top"><div class="wm"></div><div class="wrap">
+  <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9M14 17H5M17 4l3 3-3 3M7 14l-3 3 3 3"/></svg>دليل المنتجات الرسمي</span>
+  <h1>كتالوج <span class="accent">المنتجات</span></h1>
+  <p class="sub">تشكيلة منتجات شركة ايلاف الشرقية التجارية لموسم ٢٠٢٦ / ٢٠٢٧ — أدوات منزلية ومستلزمات متنوعة بجودة عالية.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="num" id="sCount">٢٥٠</div><div class="lbl">صنف متوفر</div></div>
+    <div class="stat"><div class="num" id="sSecs">١٢</div><div class="lbl">أقسام منتجات</div></div>
+    <div class="stat"><div class="num"><svg class="sar"><use href="#sar"/></svg></div><div class="lbl">التسعير بالريال السعودي</div></div>
+  </div>
+</div></section>
+
+<div class="toolbar"><div class="wrap">
+  <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input id="search" type="search" placeholder="ابحث باسم الصنف أو رقم الصنف…" aria-label="بحث"/></div>
+  <span class="count"><b id="resCount">٢٥٠</b> صنف</span>
+</div><div class="secnav" id="secnav"></div></div>
+
+<main id="main"></main>
+<div class="empty" id="empty" style="display:none">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+  <h3>لا توجد نتائج</h3><p>جرّب كلمة بحث مختلفة.</p></div>
+
+<footer class="footer"><div class="wrap">
+  <div class="brand" style="gap:14px"><img src="assets/brand/logo-trans.png" alt="ايلاف الشرقية"/>
+    <div><div class="ar">شركة ايلاف الشرقية التجارية</div><div class="en">ELAF AL SHARQIAH TRADING COMPANY</div></div></div>
+  <div class="meta">كتالوج المنتجات — موسم ٢٠٢٦ / ٢٠٢٧<br/>جميع الحقوق محفوظة © ٢٠٢٦</div>
+</div></footer>
+
+<button class="totop" id="totop" aria-label="للأعلى"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></button>
+
+<script src="data/products.js"></script>
+<script>
+const AR=['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];const toAr=n=>String(n).replace(/[0-9]/g,d=>AR[+d]);
+const C=window.CATALOG||{products:[],categories:[]};
+const CATS=C.categories, PRODS=C.products;
+const PRICES=JSON.parse(localStorage.getItem('elaf_prices')||'{}');
+const norm=s=>(s||'').replace(/[ً-ْٰ]/g,'').replace(/[إأآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').trim();
+const esc=s=>(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const main=document.getElementById('main'),empty=document.getElementById('empty'),searchEl=document.getElementById('search'),resCount=document.getElementById('resCount'),secnav=document.getElementById('secnav');
+const byCat={};CATS.forEach(c=>byCat[c.key]=[]);PRODS.forEach(p=>(byCat[p.cat]||(byCat[p.cat]=[])).push(p));
+const noImg='<div class="noimg">بدون صورة</div>';
+
+function card(p){
+  const media=p.img?`<img src="${p.img}" alt="${esc(p.name)}" loading="lazy"/>`:noImg;
+  const price=PRICES[p.sku]!=null?PRICES[p.sku]:(p.price||'');
+  const qty=p.qty?`<span class="qty">الكرتون: ${toAr(p.qty)}</span>`:'';
+  return `<article class="card"><div class="media"><span class="idx">${toAr(p.idx)}</span>${media}</div>
+  <div class="body"><h3 class="name">${esc(p.name)}</h3>
+  <div class="meta">${p.sku?`<span class="sku"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>${esc(p.sku)}</span>`:'<span></span>'}${qty}</div>
+  <div class="foot"><label class="price" title="السعر بالريال — قابل للتعديل"><svg class="sar"><use href="#sar"/></svg>
+  <input type="text" inputmode="decimal" placeholder="السعر" value="${esc(String(price))}" data-sku="${esc(p.sku)}" aria-label="السعر"/></label></div></div></article>`;
+}
+
+function buildNav(){
+  secnav.innerHTML=CATS.map(c=>`<button class="snav" data-k="${c.key}">${esc(c.ar)}<span class="c">${toAr(c.count)}</span></button>`).join('');
+  secnav.querySelectorAll('.snav').forEach(b=>b.onclick=()=>{const el=document.getElementById('sec-'+b.dataset.k);if(el)el.scrollIntoView({behavior:'smooth'});});
+}
+
+function render(){
+  const q=norm(searchEl.value),qr=searchEl.value.toLowerCase().trim();
+  let total=0,htmlOut='';
+  CATS.forEach(c=>{
+    let items=byCat[c.key]||[];
+    if(q)items=items.filter(p=>norm(p.name).includes(q)||(p.sku||'').toLowerCase().includes(qr));
+    if(!items.length)return;
+    total+=items.length;
+    htmlOut+=`<section class="section" id="sec-${c.key}">
+      <div class="sec-head"><div><div class="ar">${esc(c.ar)}</div><div class="en">${esc(c.en)}</div></div>
+      <div class="cnt">${toAr(items.length)}<span>صنف</span></div></div>
+      <div class="grid">${items.map(card).join('')}</div></section>`;
+  });
+  resCount.textContent=toAr(total);
+  if(!total){main.innerHTML='';empty.style.display='block';return;}
+  empty.style.display='none';main.innerHTML=htmlOut;
+  main.querySelectorAll('.price input').forEach(inp=>inp.addEventListener('input',e=>{
+    const s=e.target.dataset.sku,v=e.target.value.trim();
+    if(v==='')delete PRICES[s];else PRICES[s]=v;localStorage.setItem('elaf_prices',JSON.stringify(PRICES));}));
+}
+let t;searchEl.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(render,140)});
+document.getElementById('sCount').textContent=toAr(PRODS.length);
+document.getElementById('sSecs').textContent=toAr(CATS.length);
+const totop=document.getElementById('totop');addEventListener('scroll',()=>totop.classList.toggle('show',scrollY>600));totop.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+buildNav();render();
+</script>
+</body>
+</html>

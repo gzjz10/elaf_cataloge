@@ -1,0 +1,11 @@
+.DS_Store
+# large source files (exceed GitHub limits / not needed online)
+*.xlsx
+كتالوج إيلاف طباعة 2026-1.pdf
+# stray/cruft files from earlier sessions
+_cards.html
+_logo_b64.txt
+logo_output-1.png
+photo/
+product_images/
+/products.json
