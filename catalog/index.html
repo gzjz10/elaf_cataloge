@@ -181,6 +181,23 @@ body.has-sel .totop{bottom:96px}
 .prep-card .t{font-family:'Cairo';font-weight:800;color:var(--brand);font-size:18px}
 .prep-card .s{font-size:13.5px;color:var(--muted);line-height:1.6}
 
+/* excel import result */
+#xlsModal{position:fixed;inset:0;z-index:210;background:rgba(8,32,31,.62);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:16px}
+#xlsModal.show{display:flex}
+.xls-card{background:#fff;border-radius:20px;padding:26px 28px;width:100%;max-width:520px;max-height:86vh;display:flex;flex-direction:column;gap:14px;box-shadow:0 30px 80px -20px rgba(0,0,0,.5)}
+.xls-card .t{font-family:'Cairo';font-weight:800;color:var(--brand);font-size:19px}
+.xls-card .file{font-size:12.5px;color:var(--muted);word-break:break-all}
+.xls-stats{display:flex;gap:10px}
+.xls-stats div{flex:1;background:var(--soft);border-radius:12px;padding:11px;text-align:center;font-size:12.5px;color:var(--muted)}
+.xls-stats b{display:block;font-family:'Cairo';font-weight:800;font-size:22px;color:var(--brand)}
+.xls-stats .miss b{color:#b4472f}
+.xls-miss{overflow:auto;border:1px solid var(--line);border-radius:12px;font-size:13px;min-height:0}
+.xls-miss .h{position:sticky;top:0;background:#fbf3ef;color:#b4472f;font-weight:800;padding:9px 12px}
+.xls-miss .r{display:flex;gap:10px;padding:8px 12px;border-top:1px solid var(--line)}
+.xls-miss .r code{font-family:ui-monospace,monospace;color:var(--muted);flex:none}
+.xls-note{font-size:12.5px;color:var(--muted);line-height:1.6}
+.xls-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+
 /* small toast */
 #toast{position:fixed;inset-inline:0;bottom:96px;z-index:90;display:flex;justify-content:center;pointer-events:none;opacity:0;transition:opacity .25s}
 #toast.show{opacity:1}
@@ -198,7 +215,7 @@ body.has-sel .totop{bottom:96px}
   /* horizontal-scroll nav so it doesn't eat vertical space */
   .secnav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .secnav::-webkit-scrollbar{display:none}
-  .selctrl{width:100%;order:3}.selctrl .chipbtn{flex:1;justify-content:center}
+  .selctrl{width:100%;order:3}.selctrl .chipbtn{flex:1 1 0;min-width:0;justify-content:center;padding:10px 6px;font-size:12.5px;gap:5px}.selctrl .chipbtn svg{width:14px;height:14px;flex:none}
   .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:13px}
   .name{font-size:13.5px}.sec-head{padding:14px 16px}.sec-head .ar{font-size:17px}
   .sec-head .en{display:none}.secpick{font-size:11.5px;padding:7px 10px}.sec-right{gap:9px}
@@ -356,6 +373,8 @@ body.has-sel .totop{bottom:96px}
   <span class="count"><b id="resCount">١١٣٦</b> صنف</span>
   <div class="selctrl">
     <button class="chipbtn" id="pickAll"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>تحديد الظاهر</button>
+    <button class="chipbtn" id="xlsBtn" title="ارفع ملف إكسل وسيتم تحديد المنتجات الموجودة فيه تلقائيًا"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 13l6 6M15 13l-6 6"/></svg>استيراد إكسل</button>
+    <input type="file" id="xlsFile" accept=".xlsx,.xls,.csv" hidden/>
     <button class="chipbtn" id="selOnly"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>المختار فقط</button>
   </div>
 </div><div class="secnav" id="secnav"></div></div>
@@ -388,6 +407,21 @@ body.has-sel .totop{bottom:96px}
   <div class="prep-spin"></div>
   <div class="t">جارٍ تجهيز ملف PDF…</div>
   <div class="s" id="prepSub">يتم الآن تجهيز الصفحات والصور بجودة عالية. عند ظهور نافذة الطباعة اختر «حفظ كملف PDF».</div>
+</div></div>
+
+<div id="xlsModal" role="dialog" aria-modal="true"><div class="xls-card">
+  <div><div class="t">نتيجة استيراد ملف الإكسل</div><div class="file" id="xlsName"></div></div>
+  <div class="xls-stats">
+    <div><b id="xlsRows">٠</b>صنف في الملف</div>
+    <div><b id="xlsHit">٠</b>موجود في الكتالوج</div>
+    <div class="miss"><b id="xlsMissN">٠</b>غير موجود</div>
+  </div>
+  <div class="xls-miss" id="xlsMiss"></div>
+  <div class="xls-note" id="xlsNote"></div>
+  <div class="xls-actions">
+    <button class="btn btn-ghost" id="xlsClose">إغلاق</button>
+    <button class="btn btn-primary" id="xlsShow">عرض المختار</button>
+  </div>
 </div></div>
 
 <div id="toast"><span></span></div>
@@ -570,6 +604,98 @@ $('selClear').onclick=()=>{
   main.querySelectorAll('.card.sel').forEach(c=>c.classList.remove('sel'));
   updateSelUI();toast('تم مسح التحديد');
 };
+
+/* =================== EXCEL IMPORT =================== */
+// Upload a sheet → every product whose item code (or exact name) appears in it gets selected.
+const keyOf=v=>String(v==null?'':v).trim().replace(/\.0+$/,'').toUpperCase();
+const nameKey=s=>norm(String(s||'')).replace(/\s+/g,' ');
+const bySku={},byName={};
+PRODS.forEach(p=>{
+  if(p.sku)(bySku[keyOf(p.sku)]||(bySku[keyOf(p.sku)]=[])).push(p);
+  const n=nameKey(p.name);if(n)(byName[n]||(byName[n]=[])).push(p);
+});
+const CODE_HDR=/رقم\s*الصنف|كود|الكود|باركود|sku|code|barcode|item/i;
+const NAME_HDR=/اسم|الصنف|name|desc/i;
+
+let xlsxReady=null;
+function loadXLSX(){
+  if(window.XLSX)return Promise.resolve();
+  return xlsxReady||(xlsxReady=new Promise((ok,fail)=>{
+    const s=document.createElement('script');s.src='assets/xlsx.full.min.js';
+    s.onload=ok;s.onerror=()=>{xlsxReady=null;fail(new Error('load'));};document.head.appendChild(s);
+  }));
+}
+
+// pick the column with the most hits against a lookup; a matching header wins ties
+function bestCol(rows,hdr,test,hdrRe){
+  const width=Math.max(0,...rows.map(r=>r.length));let best=-1,score=0;
+  for(let c=0;c<width;c++){
+    let n=0;rows.forEach(r=>{if(test(r[c]))n++;});
+    if(hdr&&hdrRe.test(String(hdr[c]||'')))n+=0.5;
+    if(n>score){score=n;best=c;}
+  }
+  return score>=1?best:-1;
+}
+
+function matchSheet(rows){
+  // header = first row in the top 10 that names a code column
+  let h=rows.slice(0,10).findIndex(r=>r.some(v=>CODE_HDR.test(String(v||''))));
+  const hdr=h>=0?rows[h]:null,body=h>=0?rows.slice(h+1):rows;
+  const codeCol=bestCol(body,hdr,v=>!!bySku[keyOf(v)],CODE_HDR);
+  const nameCol=bestCol(body,hdr,v=>!!byName[nameKey(v)],NAME_HDR);
+  const hits=new Set(),miss=[];let total=0,found_n=0;
+  body.forEach(r=>{
+    const code=codeCol>=0?keyOf(r[codeCol]):'',name=nameCol>=0?String(r[nameCol]||'').trim():'';
+    if(!code&&!name)return;
+    total++;
+    // name is only a fallback for rows without a code, so an unknown code never grabs a namesake
+    const found=code?bySku[code]:byName[nameKey(name)];
+    if(found){found_n++;found.forEach(p=>hits.add(p.idx));}else miss.push({code,name});
+  });
+  return {total,found:found_n,hits,miss};
+}
+
+async function importExcel(file){
+  prepSub.textContent='جارٍ قراءة ملف الإكسل ومطابقة الأصناف مع الكتالوج…';
+  prepOverlay.classList.add('show');
+  try{
+    await loadXLSX();
+    const wb=XLSX.read(await file.arrayBuffer(),{type:'array'});
+    let total=0,found=0,miss=[];const hits=new Set();
+    wb.SheetNames.forEach(n=>{
+      const rows=XLSX.utils.sheet_to_json(wb.Sheets[n],{header:1,raw:false,defval:''});
+      const r=matchSheet(rows);total+=r.total;found+=r.found;miss=miss.concat(r.miss);r.hits.forEach(i=>hits.add(i));
+    });
+    const before=SEL.size;
+    hits.forEach(i=>SEL.add(i));saveSel();
+    if(showSelOnly)render();else main.querySelectorAll('.card').forEach(c=>c.classList.toggle('sel',SEL.has(+c.dataset.idx)));
+    updateSelUI();buildNav();
+    showXlsResult(file.name,total,found,hits.size,miss,SEL.size-before);
+  }catch(e){
+    console.error(e);toast('تعذّر قراءة الملف — تأكد أنه ملف إكسل صحيح');
+  }finally{prepOverlay.classList.remove('show');}
+}
+
+function showXlsResult(fname,total,found,hit,miss,added){
+  $('xlsName').textContent=fname;
+  $('xlsRows').textContent=toAr(total);
+  $('xlsHit').textContent=toAr(found);
+  $('xlsMissN').textContent=toAr(miss.length);
+  const box=$('xlsMiss');
+  box.style.display=miss.length?'block':'none';
+  box.innerHTML=miss.length?'<div class="h">أصناف غير موجودة في الكتالوج</div>'+
+    miss.map(m=>`<div class="r"><code>${esc(m.code)||'—'}</code><span>${esc(m.name)}</span></div>`).join(''):'';
+  $('xlsNote').textContent=!total?'لم يتم العثور على عمود «رقم الصنف» أو «اسم الصنف» في الملف.'
+    :`تم تحديد ${toAr(hit)} بطاقة منتج في الكتالوج`+(hit>found?' (بعض الأصناف لها أكثر من بطاقة)':'')
+    +(hit>added?` — ${toAr(hit-added)} منها كانت محددة مسبقًا.`:'.');
+  $('xlsModal').classList.add('show');
+}
+
+$('xlsBtn').onclick=()=>$('xlsFile').click();
+$('xlsFile').onchange=e=>{const f=e.target.files[0];e.target.value='';if(f)importExcel(f);};
+$('xlsClose').onclick=()=>$('xlsModal').classList.remove('show');
+$('xlsModal').onclick=e=>{if(e.target.id==='xlsModal')e.target.classList.remove('show');};
+$('xlsShow').onclick=()=>{$('xlsModal').classList.remove('show');if(SEL.size){setSelOnly(true);window.scrollTo({top:0,behavior:'smooth'});}};
 
 /* =================== PDF BUILD =================== */
 const SARp='<svg class="psar"><use href="#sar"/></svg>';
