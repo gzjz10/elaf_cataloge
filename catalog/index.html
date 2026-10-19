@@ -616,6 +616,7 @@ PRODS.forEach(p=>{
 });
 const CODE_HDR=/رقم\s*الصنف|كود|الكود|باركود|sku|code|barcode|item/i;
 const NAME_HDR=/اسم|الصنف|name|desc/i;
+const PRICE_HDR=/سعر|السعر|price/i;
 
 let xlsxReady=null;
 function loadXLSX(){
@@ -643,16 +644,23 @@ function matchSheet(rows){
   const hdr=h>=0?rows[h]:null,body=h>=0?rows.slice(h+1):rows;
   const codeCol=bestCol(body,hdr,v=>!!bySku[keyOf(v)],CODE_HDR);
   const nameCol=bestCol(body,hdr,v=>!!byName[nameKey(v)],NAME_HDR);
-  const hits=new Set(),miss=[];let total=0,found_n=0;
+  // price column only by header, so a quantity column is never read as a price
+  const priceCol=hdr?hdr.findIndex(v=>PRICE_HDR.test(String(v||''))):-1;
+  const prices={};
+  const hits=new Set(),miss=[];let total=0,found_n=0,priced=0;
   body.forEach(r=>{
     const code=codeCol>=0?keyOf(r[codeCol]):'',name=nameCol>=0?String(r[nameCol]||'').trim():'';
     if(!code&&!name)return;
     total++;
     // name is only a fallback for rows without a code, so an unknown code never grabs a namesake
     const found=code?bySku[code]:byName[nameKey(name)];
-    if(found){found_n++;found.forEach(p=>hits.add(p.idx));}else miss.push({code,name});
+    if(found){
+      found_n++;found.forEach(p=>hits.add(p.idx));
+      const pr=priceCol>=0?String(r[priceCol]||'').replace(/[٠-٩]/g,d=>AR.indexOf(d)).replace(/[^\d.]/g,''):'';
+      if(pr&&+pr>0){priced++;found.forEach(p=>{if(p.sku)prices[p.sku]=pr;});}
+    }else miss.push({code,name});
   });
-  return {total,found:found_n,hits,miss};
+  return {total,found:found_n,priced,hits,miss,prices};
 }
 
 async function importExcel(file){
@@ -661,22 +669,24 @@ async function importExcel(file){
   try{
     await loadXLSX();
     const wb=XLSX.read(await file.arrayBuffer(),{type:'array'});
-    let total=0,found=0,miss=[];const hits=new Set();
+    let total=0,found=0,priced=0,miss=[];const hits=new Set(),prices={};
     wb.SheetNames.forEach(n=>{
       const rows=XLSX.utils.sheet_to_json(wb.Sheets[n],{header:1,raw:false,defval:''});
-      const r=matchSheet(rows);total+=r.total;found+=r.found;miss=miss.concat(r.miss);r.hits.forEach(i=>hits.add(i));
+      const r=matchSheet(rows);total+=r.total;found+=r.found;priced+=r.priced;Object.assign(prices,r.prices);miss=miss.concat(r.miss);r.hits.forEach(i=>hits.add(i));
     });
     const before=SEL.size;
     hits.forEach(i=>SEL.add(i));saveSel();
-    if(showSelOnly)render();else main.querySelectorAll('.card').forEach(c=>c.classList.toggle('sel',SEL.has(+c.dataset.idx)));
+    const nPrices=priced;
+    if(nPrices){Object.assign(PRICES,prices);localStorage.setItem('elaf_prices',JSON.stringify(PRICES));}
+    render();
     updateSelUI();buildNav();
-    showXlsResult(file.name,total,found,hits.size,miss,SEL.size-before);
+    showXlsResult(file.name,total,found,hits.size,miss,SEL.size-before,nPrices);
   }catch(e){
     console.error(e);toast('تعذّر قراءة الملف — تأكد أنه ملف إكسل صحيح');
   }finally{prepOverlay.classList.remove('show');}
 }
 
-function showXlsResult(fname,total,found,hit,miss,added){
+function showXlsResult(fname,total,found,hit,miss,added,nPrices){
   $('xlsName').textContent=fname;
   $('xlsRows').textContent=toAr(total);
   $('xlsHit').textContent=toAr(found);
@@ -687,7 +697,8 @@ function showXlsResult(fname,total,found,hit,miss,added){
     miss.map(m=>`<div class="r"><code>${esc(m.code)||'—'}</code><span>${esc(m.name)}</span></div>`).join(''):'';
   $('xlsNote').textContent=!total?'لم يتم العثور على عمود «رقم الصنف» أو «اسم الصنف» في الملف.'
     :`تم تحديد ${toAr(hit)} بطاقة منتج في الكتالوج`+(hit>found?' (بعض الأصناف لها أكثر من بطاقة)':'')
-    +(hit>added?` — ${toAr(hit-added)} منها كانت محددة مسبقًا.`:'.');
+    +(hit>added?` — ${toAr(hit-added)} منها كانت محددة مسبقًا.`:'.')
+    +(nPrices?` وتم تحديث أسعار ${toAr(nPrices)} صنف من عمود السعر في الملف.`:'');
   $('xlsModal').classList.add('show');
 }
 
